@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float yMove;
     public float gravity;
 
+    public int keys;
+
     public bool grounded;
 
     public KeyCode front;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Instance = this;
+        keys = 0;
         grounded = pilot.isGrounded;
     }
 
@@ -77,25 +80,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
-    public void OnCollisionEnter(Collision col)
+    //hit detection
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(col.gameObject.tag == "DeathPlane")
-        {
-            Destroy(this);
-            //Death stuff
-        }
-
-
-        if(col.gameObject.tag == "Landmine")
-        {
-            Destroy(this);
-            //Death stuff
-            //Add an explosion
-        }
-
 
     }
+
+
+
 
 }
 

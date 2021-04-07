@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class DeathPlane : MonoBehaviour
+public class TextScript : MonoBehaviour
 {
+
+    public Text txt;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +19,14 @@ public class DeathPlane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        txt.text = RigidBodyMove.Instance.keys + "/4 Keys";
 
-
-    public void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag == "Player")
+        if(RigidBodyMove.Instance.keys == 4)
         {
-            Destroy(col.gameObject);
-            //Death Stuff
-            SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene("Win");
 
         }
+
     }
 
 

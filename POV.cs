@@ -15,6 +15,7 @@ public class POV : MonoBehaviour
 
     public Transform playerBody;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +34,12 @@ public class POV : MonoBehaviour
         xRotation -= Input.GetAxis("Mouse Y");
 
         xRotation = Mathf.Clamp(xRotation, -90f/sensitivity, 90f/sensitivity);
-
-        rotation.y = yRotation;
-        rotation.x = xRotation;
+        
+        rotation.y = Mathf.Round(yRotation * 100f) / 100f;
+        rotation.x = Mathf.Round(xRotation * 100f) / 100f;
         playerRotation.y = yRotation;
+
+
 
         this.transform.eulerAngles = (Vector2)rotation * sensitivity;
         playerBody.transform.eulerAngles = (Vector2)playerRotation * sensitivity;
